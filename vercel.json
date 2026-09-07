@@ -1,0 +1,30 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "functions": {
+    "api/index.js": {
+      "maxDuration": 60,
+      "includeFiles": ["src/analyzer.py"]
+    }
+  },
+  "rewrites": [
+    { "source": "/api/:path*", "destination": "/api/index.js" },
+    { "source": "/app", "destination": "/app.html" },
+    { "source": "/app/:path*", "destination": "/app.html" },
+    { "source": "/edge", "destination": "/edge.html" },
+    { "source": "/edge/:path*", "destination": "/edge.html" },
+    { "source": "/", "destination": "/index.html" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
+        { "key": "Referrer-Policy", "value": "same-origin" },
+        { "key": "Cross-Origin-Opener-Policy", "value": "same-origin" },
+        { "key": "Permissions-Policy", "value": "camera=(self), geolocation=(self), microphone=()" }
+      ]
+    }
+  ]
+}

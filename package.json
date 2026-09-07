@@ -1,0 +1,24 @@
+{
+  "name": "citylens-ai",
+  "version": "3.0.0",
+  "description": "CityLens AI \u2014 urban intelligence and civic operations platform. Turns public-transport buses into mobile city scanners: on-edge computer vision, geo-tagged incident deduplication, SLA-driven ticketing and AI-verified repairs.",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js",
+    "seed": "node src/seed.js",
+    "dev": "node server.js",
+    "seed:demo": "node src/demo_seed.js",
+    "migrate": "node scripts/migrate.js",
+    "check": "node scripts/check.js",
+    "test:integration": "node scripts/integration_test.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "^1.1.0",
+    "@vercel/blob": "^2.6.1"
+  },
+  "license": "MIT"
+}
